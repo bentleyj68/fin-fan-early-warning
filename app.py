@@ -7,7 +7,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
-import pprint
+import os
 import time
 
 #################################################
@@ -16,8 +16,8 @@ import time
 # PotgreSQL connection requirements
 # from config import userid
 # from config import password
-userid = 'root'
-password = 'sneaky888'
+userid = os.environ['userid']
+password = os.environ['password']
 rds_connection_string = f"{userid}:{password}@awspostgres.ctkgxnaawxx6.ap-southeast-2.rds.amazonaws.com/AWSPostgres"
 engine = create_engine(f'postgresql://{rds_connection_string}')
 
