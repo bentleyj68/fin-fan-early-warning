@@ -43,10 +43,20 @@ app = Flask(__name__)
 def index():
     return render_template("dashboard.html")
 
+# Set route - displays a dashboard page
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
 # Set route - displays a blank page
 @app.route("/blank")
 def blank():
     return render_template("blank.html")
+
+# Set route - displays a basic table
+@app.route("/basic-table")
+def table():
+    return render_template("basic-table.html")
 
 
 #################################################

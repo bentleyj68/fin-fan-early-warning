@@ -10,7 +10,7 @@
     <title>Fin-Fan Early Warning System</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../static/image/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/image/favicon.ico">
     <!-- Custom CSS -->
     <link href="../static/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -115,7 +115,7 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
@@ -129,7 +129,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Basic Table</span>
@@ -287,13 +287,13 @@
                     </div>
                 </div>
                 <!-- ============================================================== -->
-                <!-- RECENT SALES -->
+                <!-- RECENT FAILURES -->
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">Recent sales</h3>
+                                <h3 class="box-title mb-0">Fin-Fan Failures</h3>
                                 <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
                                     <select class="form-select shadow-none row border-top">
                                         <option>March 2021</option>
@@ -308,64 +308,17 @@
                                 <table class="table no-wrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">#</th>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">Price</th>
+                                            <th class="border-top-0">Primary Element</th>
+                                            <th class="border-top-0">Start Time</th>
+                                            <th class="border-top-0">End Time</th>
+                                            <th class="border-top-0">Duration</th>
+                                            <th class="border-top-0">Difference</th>
+                                            <th class="border-top-0">Comments</th>
+                                            <th class="border-top-0">Failure</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 18, 2021</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td>TAX</td>
-                                            <td class="txt-oflo">April 20, 2021</td>
-                                            <td><span class="text-danger">-$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td class="txt-oflo">Hosting press html</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 21, 2021</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td class="txt-oflo">Digital Agency PSD</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 23, 2021</td>
-                                            <td><span class="text-danger">-$14</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td class="txt-oflo">Helping Hands WP Theme</td>
-                                            <td>MEMBER</td>
-                                            <td class="txt-oflo">April 22, 2021</td>
-                                            <td><span class="text-success">$64</span></td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody></tbody>
+                                    
                                 </table>
                             </div>
                         </div>
@@ -582,6 +535,13 @@
     <script src="../static/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="../static/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../static/js/pages/dashboards/dashboard1.js"></script>
+
+
+    <!--Custom JavaScript - Jim Bentley -->
+    <!--Data Analytics Course -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="../static/js/table.js"></script>
+
 </body>
 
 </html>
