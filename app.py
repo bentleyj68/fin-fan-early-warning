@@ -25,7 +25,7 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save reference to the table
-Patients = Base.classes.patients
+Failures = Base.classes.hvac_failures
 # Station = Base.classes.station
 
 #################################################
@@ -49,21 +49,38 @@ def blank():
     return render_template("blank.html")
 
 
+#################################################
+# Flask Routes - API's
+#################################################
+
 # A route to return all of the available ..........
-@app.route('/api/v1/resources/patients/all', methods=['GET'])
-def api_patients_all():
-#     docs = []
-#     # read records from Mongo, remove the _id field, convert to JSON and allow for CORS
-#     for doc in mongo.db.country_codes.find():
-#         doc.pop('_id') 
-#         docs.append(doc)
+@app.route("/api/v1/failures")
+def failures():
+    # Create our session (link) from Python to the DB
     session = Session(engine)
-    first_row = session.query(Patients).first()
-    
-    # response = jsonify(docs)
-#     response.headers.add('Access-Control-Allow-Origin', '*')
-    return jsonify(json_list = first_row.__dict__)
-    
+
+    """Return a list of all HVAC failures"""
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    results = session.query(Failures.primary_element, Failures.start_time, Failures.end_time, Failures.duration, Failures.difference, Failures.comments, Failures.failure).all()
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of all_passengers
+    all_failures = []
+    for primary_element, start_time, end_time, duration, difference, comments, failure in results:
+        failure_dict = {}
+        failure_dict["primary_element"] = primary_element
+        failure_dict["start_time"] = start_time
+        failure_dict["end_time"] = end_time
+        failure_dict["duration"] = duration
+        failure_dict["difference"] = float(difference)
+        failure_dict["comments"] = comments
+        failure_dict["failure"] = failure
+        all_failures.append(failure_dict)
+
+    return jsonify(all_failures)
 
 
 if __name__ == "__main__":
