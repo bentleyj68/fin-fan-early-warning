@@ -14,8 +14,10 @@ import time
 # Database Setup
 #################################################
 # PotgreSQL connection requirements
-from config import userid
-from config import password
+# from config import userid
+# from config import password
+userid = 'root'
+password = 'sneaky888'
 rds_connection_string = f"{userid}:{password}@awspostgres.ctkgxnaawxx6.ap-southeast-2.rds.amazonaws.com/AWSPostgres"
 engine = create_engine(f'postgresql://{rds_connection_string}')
 
