@@ -1,6 +1,15 @@
 // Store our API endpoint inside queryUrl
-var queryUrl = 
+var data1 = document.getElementsByName('mydata')[0].content;
+
+if(data1=='dashboard'){
+  var queryUrl = 
+  `api/v1/failures?id=top`;
+}
+else {
+  var queryUrl = 
   `api/v1/failures`;
+}
+
 
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {

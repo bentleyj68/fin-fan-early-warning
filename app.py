@@ -60,6 +60,11 @@ def blank():
 def table():
     return render_template("basic-table.html")
 
+# Set route - displays a site map
+@app.route("/site-map")
+def sitemap():
+    return render_template("map-google.html")
+
 
 #################################################
 # Flask Routes - API's
@@ -68,6 +73,7 @@ def table():
 # A route to return all of the available ..........
 @app.route("/api/v1/failures")
 def failures():
+    
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
@@ -75,11 +81,15 @@ def failures():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    results = session.query(Failures.primary_element, Failures.start_time, Failures.end_time, Failures.duration, Failures.difference, Failures.comments, Failures.failure).all()
+    # Check for Parameters
+    if 'id' in request.args:
+        results = session.query(Failures.primary_element, Failures.start_time, Failures.end_time, Failures.duration, Failures.difference, Failures.comments, Failures.failure).limit(5).all()
+    else:
+        results = session.query(Failures.primary_element, Failures.start_time, Failures.end_time, Failures.duration, Failures.difference, Failures.comments, Failures.failure).all()
 
     session.close()
 
-    # Create a dictionary from the row data and append to a list of all_passengers
+    # Create a dictionary from the row data and append to a list of all_failures
     all_failures = []
     for primary_element, start_time, end_time, duration, difference, comments, failure in results:
         failure_dict = {}
