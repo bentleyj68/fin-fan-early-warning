@@ -8,3 +8,9 @@ CREATE TABLE hvac_failures (
   comments TEXT,
   failure BOOLEAN
 );
+
+CREATE TABLE speed (
+  id SERIAL PRIMARY KEY NOT NULL,
+  equipment_id TEXT,
+  speed INT
+);

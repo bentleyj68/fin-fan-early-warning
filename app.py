@@ -28,7 +28,7 @@ Base.prepare(engine, reflect=True)
 
 # Save reference to the table
 Failures = Base.classes.hvac_failures
-# Station = Base.classes.station
+Speed_values = Base.classes.speed
 
 #################################################
 # Flask Setup
@@ -70,7 +70,7 @@ def sitemap():
 # Flask Routes - API's
 #################################################
 
-# A route to return all of the available ..........
+# A route to return all of the available failures
 @app.route("/api/v1/failures")
 def failures():
     
@@ -103,6 +103,36 @@ def failures():
         all_failures.append(failure_dict)
 
     return jsonify(all_failures)
+
+# A route to return the latest speed values for a fin-fan
+@app.route("/api/v1/speed")
+def speed_function():
+    
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of speed values"""
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    # Check for Parameters
+    if 'id' in request.args:
+        results = session.query(Speed_values.equipment_id, Speed_values.speed).filter_by(Speed_values.equipment_id==id).all()
+    else:
+        results = session.query(Speed_values.equipment_id, Speed_values.speed).all()
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of all_failures
+    speed_vals = []
+    for equipment_id, speed in results:
+        speed_dict = {}
+        speed_dict["equipment_id"] = equipment_id
+        speed_dict["speed"] = speed
+        speed_vals.append(speed_dict)
+
+    return jsonify(speed_vals)
+
 
 
 if __name__ == "__main__":
